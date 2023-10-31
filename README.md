@@ -1,13 +1,19 @@
-# Student template
+# COMP.SE.200 Software testing
+This reporsitory contains tests that are implemented to courses utility library. From folder `.github`
+GitHub actions configuration files are available.
 
-## Purpose of this repository
+## Run tests
+Run all tests and visualize them in the console with command and get the test reports to `reports` folder with command:
+```
+npm test
 
-This is a project template for students participating in Software Testing course
-at Tampere University.
+or
 
-The repository only contains the source code that is under testing, `package.json` skeleton
-and LICENSE file.
+npm run test
+```
 
-Source code folder contains a separate license file that must **NOT** be removed under any circumstances!
-Removing this license file directly violates terms and conditions of the software under testing.
-Individuals who remove or modify the license file will also carry the consequences.
+## Run tests with coverage
+Run all tests and get the tests coverage report to `coverage` folder with command:
+```
+npm run test-coverage
+```
