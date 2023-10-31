@@ -1,5 +1,5 @@
-import capitalize from './capitalize';
-
+import capitalize from '../src/capitalize.js';
+// https://websitehurdles.com/jest-cannot-use-import-statement-error/
 describe('capitalize', () => {
   it('should capitalize the first character of a string and convert the rest to lowercase', () => {
     expect(capitalize('FRED')).toBe('Fred');
