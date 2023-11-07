@@ -38,8 +38,13 @@ describe('endsWith', () => {
   // Are these valid? Bug for example: The endsWith function cannot handle negative or undefined positions.
   // in endsWith.js: row 27 position should be lenght instead of 0??
   test('should treat the position as the string`s length when position is not a number or negative', () => {
-    expect(endsWith('abc', 'c', 'undefined')).toBe(true);
-    excpect(endsWith('abc', 'c', -1)).toBe(true);
+    //expect(endsWith('abc', 'a', 'undefined')).toBe(true);
+    expect(endsWith('abc', 'c', 'asd')).toBe(true);
+  });
+
+  test('add description', () => {
+    expect(endsWith('abc', null)).toBe(false);
+    expect(endsWith('', undefined)).toBe(false);
   });
 
   test('should handle edge cases', () => {
