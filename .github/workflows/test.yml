@@ -1,10 +1,12 @@
 on:
   pull_request:
   push:
+
 permissions:
   contents: read
   actions: read
   checks: write
+
 jobs:
   build-test:
     name: Build & Test
@@ -14,9 +16,10 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '18'
+
       - name: Install dependencies
         run: npm install
-  
+
       - name: Run Jest tests
         run: npm test
 
@@ -27,3 +30,9 @@ jobs:
           name: JEST Tests           
           path: reports/jest-*.xml   
           reporter: jest-junit
+
+      - name: Coveralls
+        uses: coverallsapp/github-action@v2
+        with:
+          github-token: ${{ secrets.COVERALLS_REPO_TOKEN }}
+          path-to-lcov: ./coverage/lcov.info
