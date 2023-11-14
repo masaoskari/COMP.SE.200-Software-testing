@@ -1,7 +1,6 @@
 import capitalize from '../src/capitalize.js';
-const { toBeGreaterThan, toEqual, not } = require('jest-extended');
-const { matchers } = require('jest-chain');
-expect.extend({ ...matchers });
+import 'jest-extended';
+import 'jest-chain';
 
 /**
  * Equivalence classes:
@@ -15,20 +14,18 @@ expect.extend({ ...matchers });
  * 8. String is null or undefined
  * 9. String is a number
  * 10. Sting contans a mix of alphabetic, special, and Unicode characters
- * 
- * Edge conditions:
- * 1. String contains only one character
- * 2. String contains only special characters or Unicode characters
- * 3. String contains a mix of alphabetic, special, and Unicode characters
- * 
+ * 11. String contains only one character
+ * 12. String contains only special characters or Unicode characters
+ * 13. String contains multiple words
+ * 14. String contain tab characters or newlines
  */
 
 describe('capitalize', () => {
   test('should capitalize the first character of a string and convert the rest to lowercase', () => {
-    expect(capitalize('Fred')).toBe('Fred');
-    expect(capitalize('FRED')).toBe('Fred');
-    expect(capitalize('hello')).toBe('Hello');
-    expect(capitalize('wORLD')).toBe('World');
+    expect(capitalize('Fred')).toBe('Fred').toBeString();
+    expect(capitalize('FRED')).toBe('Fred').toBeString();
+    expect(capitalize('hello')).toBe('Hello').toBeString();
+    expect(capitalize('wORLD')).toBe('World').toBeString();
   });
 
   test('should handle language (finnish / Swedish / greek) specific characters', () => {
@@ -46,7 +43,7 @@ describe('capitalize', () => {
     expect(capitalize('/(¤#)ABc')).toBe('/(¤#)abc');
   });
 
-  test('should handle empty one character strings', () => {
+  test('should handle one character strings', () => {
     expect(capitalize('a')).toBe('A');
     expect(capitalize('A')).toBe('A');
   });
@@ -84,6 +81,14 @@ describe('capitalize', () => {
 
   test('should correctly handle strings that contain a mix of alphabetic, special, and Unicode characters', () => {
     expect(capitalize('\u00D6\\\u00F6&&HELLO')).toBe('Ö\\ö&&hello');
+  });
+
+  test('should only capitalize the first character of the first word in a multi-word string', () => {
+    expect(capitalize('hello WOrld')).toBe('Hello world');
+  });
+
+  test('should handle strings with tab characters or newlines', () => {
+    expect(capitalize('\thello\nworld')).toBe('\thello\nworld');
   });
   
 });
