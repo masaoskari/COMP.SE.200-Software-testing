@@ -9,6 +9,7 @@
     "test-coverage": "jest --coverage"
   },
   "jest": {
+    "setupFilesAfterEnv": ["./testSetup.js"],
     "reporters": [
       "default",
       "jest-junit"
