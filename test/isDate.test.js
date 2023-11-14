@@ -1,7 +1,7 @@
 import isDate from '../src/isDate.js';
-const { toBe, toEqual, not } = require('jest-extended');
-const { matchers } = require('jest-chain');
-expect.extend({ ...matchers });
+import 'jest-extended';
+import 'jest-chain';
+
 
 describe('isDate', () => {
   test('should return true for Date objects', () => {

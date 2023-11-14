@@ -1,7 +1,7 @@
 import memoize from '../src/memoize.js';
-const { toBe, toEqual, not } = require('jest-extended');
-const { matchers } = require('jest-chain');
-expect.extend({ ...matchers });
+import 'jest-extended';
+import 'jest-chain';
+
 
 describe('memoize', () => {
   test('should memoize the result of a function', () => {
