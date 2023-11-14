@@ -53,8 +53,9 @@ describe('capitalize', () => {
   });
 
   test('should handle non-string inputs', () => {
-    expect(capitalize(null)).toBe('Null');
-    expect(capitalize(undefined)).toBe('Undefined');
+    expect(capitalize(null)).toBe('');
+    expect(capitalize(undefined)).toBe('');
+    expect(capitalize()).toBe('');
     expect(capitalize(123)).toBe('123');
   });
 
