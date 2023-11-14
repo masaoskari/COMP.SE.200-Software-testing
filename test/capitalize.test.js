@@ -58,6 +58,23 @@ describe('capitalize', () => {
     expect(capitalize(123)).toBe('123');
   });
 
+  test('should handle strings with leading and trailing whitespace', () => {
+    expect(capitalize(' fred ')).toBe(' fred ');
+    expect(capitalize(' hello')).toBe(' hello');
+    expect(capitalize('world ')).toBe('World ');
+  });
+
+  test('should handle strings with special characters', () => {
+    expect(capitalize('!hello')).toBe('!hello');
+    expect(capitalize('@world')).toBe('@world');
+  });
+
+  test('should handle strings with only one character', () => {
+    expect(capitalize('f')).toBe('F');
+    expect(capitalize('H')).toBe('H');
+  });
+
+
   test('should correctly handle strings that start with a whitespace', () => {
     expect(capitalize(' hello')).toBe(' hello');
   });
