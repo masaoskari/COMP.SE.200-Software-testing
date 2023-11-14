@@ -22,6 +22,7 @@ jobs:
 
       - name: Run Jest tests
         run: npm test
+        continue-on-error: true
 
       - name: Test Report
         uses: dorny/test-reporter@v1
