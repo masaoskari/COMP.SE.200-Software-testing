@@ -1,3 +1,5 @@
+# Runs Jest coverage tests and adds the coverage report on the pull request
+# comment.
 name: 'coverage'
 on:
     pull_request:
@@ -10,7 +12,7 @@ jobs:
         steps:
             - uses: actions/checkout@v3
             - uses: ArtiomTr/jest-coverage-report-action@v2
-              continue-on-error: true
+              continue-on-error: true # In real case remove this (see from test.yml the reason).
               with:
                 github-token: ${{ secrets.SECRET }}
                 annotations: none
