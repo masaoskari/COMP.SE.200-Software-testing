@@ -13,6 +13,7 @@ expect.extend({ ...matchers });
  * 6. Default value is provided
  * 7. Default value is not provided
  * 8. Object is null or undefined
+ * 9. Path is null or undefined
  * 9. Value is object
  * 10 Value is array
  * 
@@ -50,7 +51,7 @@ describe('get', () => {
   });
 
   test('should handle non-object values', () => {
-    //expect(get(3, '0', 'default')).toBe(3); is that bug?
+    expect(get([3], 0, 'default')).toBe(3); //is that bug?
     expect(get(3, 'a.b.c', 'default')).toBe('default');
     expect(get('abc', '1', 'default')).toBe('b');
   });
@@ -59,8 +60,10 @@ describe('get', () => {
   test('should handle non-string and non-array paths', () => {
     const object = { '3': [{ 'b': { 'c': 3 } }] };
     expect(get(object, null, 'default')).toBe('default');
-    //expect(get(object, {}, 'default')).toBe('default');
-    expect(get(object, 3, 'default')).toBe([{ 'b': { 'c': 3 } }]);
+    expect(get(object, null, 'default')).toBe('default');
+    expect(get(object, undefined, 'default')).toBe('default');
+    //expect(get(object, '{}', 'default')).toBe('default');
+    expect(get(object, 3, 'default')).toStrictEqual([{ 'b': { 'c': 3 } }]);
   });
 
   test('should handle complex paths where the key is', () => {
