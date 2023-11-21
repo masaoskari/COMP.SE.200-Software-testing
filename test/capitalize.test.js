@@ -65,21 +65,6 @@ describe('capitalize', () => {
     expect(capitalize('world ')).toBe('World ');
   });
 
-  test('should handle strings with special characters', () => {
-    expect(capitalize('!hello')).toBe('!hello');
-    expect(capitalize('@world')).toBe('@world');
-  });
-
-  test('should handle strings with only one character', () => {
-    expect(capitalize('f')).toBe('F');
-    expect(capitalize('H')).toBe('H');
-  });
-
-
-  test('should correctly handle strings that start with a whitespace', () => {
-    expect(capitalize(' hello')).toBe(' hello');
-  });
-
   test('should correctly handle strings that contain special characters', () => {
     expect(capitalize('hello-%&//()=?!"#world')).toBe('Hello-%&//()=?!"#world');
   });

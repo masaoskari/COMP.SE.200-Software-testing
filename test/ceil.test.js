@@ -32,14 +32,26 @@ describe('ceil', () => {
     expect(ceil(-5.000)).toBe(-5);
   });
 
-  test('should return NaN when the input is not a number', () => {
-    expect(ceil('abc')).toBeNaN();
-  });
-
   test('should handle zero correctly', () => {
     expect(ceil(0)).toBe(0);
+    expect(ceil(-0)).toBe(-0);
     expect(ceil(0.00)).toBe(0);
     expect(ceil(0, 2)).toBe(0);
     expect(ceil(0, -2)).toBe(0);
+  });
+
+  test('should handle max and mina values correctly', () => {
+    expect(ceil(Number.MAX_SAFE_INTEGER)).toBe(Number.MAX_SAFE_INTEGER);
+    expect(ceil(Number.MIN_SAFE_INTEGER)).toBe(Number.MIN_SAFE_INTEGER);
+    expect(ceil(Number.MAX_SAFE_INTEGER+1)).toBe(Number.MAX_SAFE_INTEGER+1);
+    expect(ceil(Number.MIN_SAFE_INTEGER-1)).toBe(Number.MIN_SAFE_INTEGER-1);
+  });
+
+  test('should handle undefined and wrong input correctly', () => {
+    expect(ceil(NaN)).toBeNaN();
+    expect(ceil(undefined)).toBeNaN();
+    expect(ceil()).toBeNaN();
+    expect(ceil(null)).toBeNaN();
+    expect(ceil('abc')).toBeNaN();
   });
 });
