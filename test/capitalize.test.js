@@ -53,13 +53,16 @@ describe('capitalize', () => {
   });
 
   test('should handle non-string inputs', () => {
-    expect(capitalize(null)).toBe('Null');
-    expect(capitalize(undefined)).toBe('Undefined');
+    expect(capitalize(null)).toBe('');
+    expect(capitalize(undefined)).toBe('');
+    expect(capitalize()).toBe('');
     expect(capitalize(123)).toBe('123');
   });
 
-  test('should correctly handle strings that start with a whitespace', () => {
+  test('should handle strings with leading and trailing whitespace', () => {
+    expect(capitalize(' fred ')).toBe(' fred ');
     expect(capitalize(' hello')).toBe(' hello');
+    expect(capitalize('world ')).toBe('World ');
   });
 
   test('should correctly handle strings that contain special characters', () => {
