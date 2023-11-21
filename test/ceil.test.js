@@ -1,7 +1,6 @@
 import ceil from '../src/ceil.js';
-const { toBeGreaterThan, toEqual, not } = require('jest-extended');
-const { matchers } = require('jest-chain');
-expect.extend({ ...matchers });
+import 'jest-extended';
+import 'jest-chain';
 
 describe('ceil', () => {
   test('should round up to the nearest whole number', () => {

@@ -13,6 +13,18 @@
     "reporters": [
       "default",
       "jest-junit"
+    ],
+    "collectCoverageFrom": [
+      "src/ceil.js",
+      "src/capitalize.js",
+      "src/countBy.js",
+      "src/endsWith.js",
+      "src/get.js",
+      "src/isDate.js",
+      "src/isEmpty.js",
+      "src/memoize.js",
+      "src/reduce.js",
+      "src/toNumber.js"
     ]
   },
   "jest-junit": {

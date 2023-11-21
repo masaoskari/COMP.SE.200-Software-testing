@@ -1,7 +1,6 @@
 import countBy from '../src/countBy.js';
-const { toBeGreaterThan, toEqual, not } = require('jest-extended');
-const { matchers } = require('jest-chain');
-expect.extend({ ...matchers });
+import 'jest-extended';
+import 'jest-chain';
 
 describe('countBy', () => {
   test('should count by a property of objects in an array', () => {

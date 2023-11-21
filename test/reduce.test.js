@@ -1,7 +1,6 @@
 import reduce from '../src/reduce.js';
-const { toBeGreaterThan, toEqual, not } = require('jest-extended');
-const { matchers } = require('jest-chain');
-expect.extend({ ...matchers });
+import 'jest-extended';
+import 'jest-chain';
 
 describe('reduce', () => {
   test('should reduce an array to a single value', () => {

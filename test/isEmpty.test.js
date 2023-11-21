@@ -1,7 +1,6 @@
 import isEmpty from '../src/isEmpty.js';
-const { toBeGreaterThan, toEqual, not } = require('jest-extended');
-const { matchers } = require('jest-chain');
-expect.extend({ ...matchers });
+import 'jest-extended';
+import 'jest-chain';
 
 describe('isEmpty', () => {
   test('should return true for null and undefined input', () => {
