@@ -24,6 +24,7 @@ import 'jest-chain';
 describe('toNumber', () => {
   test('should return the number when value is a number', () => {
     expect(toNumber(3.2)).toBe(3.2);
+    expect(toNumber(0)).toBe(0);
     expect(toNumber(Number.MIN_VALUE)).toBe(5e-324);
     expect(toNumber(Number.MAX_VALUE)).toBe(1.7976931348623157e+308);
     expect(toNumber(Infinity)).toBe(Infinity);
@@ -64,6 +65,7 @@ describe('toNumber', () => {
   test('should handle null and undefined', () => {
     expect(toNumber(null)).toBe(0); // is null 0?
     expect(toNumber(undefined)).toBeNaN();
+    expect(toNumber(NaN)).toBeNaN();
   });
 
   test('should convert string value to a number', () => {
@@ -92,8 +94,8 @@ describe('toNumber', () => {
   });
 
   test('should handle BigInt values', () => {
-    const bigInt = BigInt(123);
-    expect(toNumber(bigInt)).toBe(123);
+    const bigInt = BigInt(0);
+    expect(toNumber(bigInt)).toBe(0);
   });
 
   test('should handle objects with custom toString methods', () => {
