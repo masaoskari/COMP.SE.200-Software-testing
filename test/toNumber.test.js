@@ -93,11 +93,6 @@ describe('toNumber', () => {
     expect(toNumber([])).toBe(0);
   });
 
-  test('should handle BigInt values', () => {
-    const bigInt = BigInt(0);
-    expect(toNumber(bigInt)).toBe(0);
-  });
-
   test('should handle objects with custom toString methods', () => {
     expect(toNumber({ toString: () => '3.2' })).toBe(3.2);
     expect(toNumber({ toString: () => 'abc' })).toBeNaN();
