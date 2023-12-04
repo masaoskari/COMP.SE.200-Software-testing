@@ -12,6 +12,10 @@ describe('reduce', () => {
     expect(reduce([1, 2, 3], (sum, n) => sum + n)).toBe(6);
   });
 
+  test('should handle zeros and negavite numbers', () => {
+    expect(reduce([1, 0, -2], (sum, n) => sum + n)).toBe(-1);
+  });
+
   test('should reduce an object to a single value', () => {
     const object = { 'a': 1, 'b': 2, 'c': 1 };
     const iteratee = (result, value, key) => {
@@ -21,11 +25,17 @@ describe('reduce', () => {
     expect(reduce(object, iteratee, {})).toEqual({ '1': ['a', 'c'], '2': ['b'] });
   });
 
-  test('should handle empty collections', () => {
+  test('should handle empty collections with accumulator', () => {
     expect(reduce([], (sum, n) => sum + n, 0)).toBe(0);
-    expect(reduce({}, (result, value, key) => result, {})).toEqual({});
     expect(reduce([], (sum, n) => sum + n, 10)).toBe(10);
-    expect(reduce({}, (result, value, key) => result, { 'a': 1 })).toEqual({ 'a': 1 });
+    expect(reduce({}, (sum, n) => sum + n, 0)).toBe(0);
+    expect(reduce({}, (result) => result, {})).toEqual({});
+    expect(reduce({}, (result) => result, { 'a': 1 })).toEqual({ 'a': 1 });
+  });
+
+  test('should handle empty collections without accumulator', () => {
+    expect(reduce([], (result) => result)).toBeUndefined();
+    expect(reduce({}, (result) => result)).toBeUndefined();
   });
 
 });

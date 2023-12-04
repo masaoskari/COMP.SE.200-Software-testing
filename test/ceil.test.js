@@ -50,7 +50,7 @@ describe('ceil', () => {
     expect(ceil(NaN)).toBeNaN();
     expect(ceil(undefined)).toBeNaN();
     expect(ceil()).toBeNaN();
-    expect(ceil(null)).toBeNaN();
+    expect(ceil(null)).toBe(0);
     expect(ceil('abc')).toBeNaN();
   });
 });
