@@ -22,7 +22,7 @@ jobs:
         run: npm install
 
       - name: Run Jest tests
-        run: npm test
+        run: npm run test-ci
         # In real case this should not be allowed, but now when we are not going to change current code implementations this add is needed so that reports are made.
         continue-on-error: true 
 
