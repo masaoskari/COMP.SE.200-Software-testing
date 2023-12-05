@@ -44,7 +44,7 @@ describe('isEmpty', () => {
   
   test('should return true for empty buffer', () => {
     
-    expect(isEmpty(new Buffer(0))).toBe(true)
+    expect(isEmpty(new Buffer.alloc(0))).toBe(true)
   });
 
   test('should return false for nonempty buffer', () => {
