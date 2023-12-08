@@ -44,7 +44,7 @@ describe('endsWith', () => {
     expect(endsWith('abc', 'a', 'test')).toBe(false).toBeBoolean();
   });
 
-  // Bug or just a wanted action?
+
   test('should return false when the second argument is null or undefined', () => {
     expect(endsWith('abc', null)).toBe(false).toBeBoolean();
     expect(endsWith('', undefined)).toBe(false).toBeBoolean();
