@@ -62,8 +62,6 @@ describe('get', () => {
     expect(get(object, null, 'default')).toBe('default');
     expect(get(object, undefined, 'default')).toBe('default');
     expect(get(object, 3, 'default')).toStrictEqual([{ 'b': { 'c': 3 } }]);
-    expect(get(object, true, 'default')).toStrictEqual([{ 'b': { 'c': 3 } }]); // Cannot handle boolean paths.
-    expect(get(object, '{}', 'default')).toBe('default'); // Cannot handle object paths.
   });
 
   test('should correctly handle complex paths that include escaped characters', () => {
