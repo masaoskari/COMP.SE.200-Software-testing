@@ -19,6 +19,32 @@ describe('isDate', () => {
     expect(isDate(null)).toBe(false);
     expect(isDate(undefined)).toBe(false);
   });
+
+  test('should return false for February 29 in a non-leap year', () => {
+    const date = new Date(2021, 1, 29);
+    expect(isDate(date)).toBe(false);
+  });
+  
+  test('should return false for April 31', () => {
+    const date = new Date(2021, 3, 31);
+    expect(isDate(date)).toBe(false);
+  });
+  
+  test('should return false for invalid day', () => {
+    const date = new Date(2021, 1, 50);
+    expect(isDate(date)).toBe(false);
+  });
+
+  test('should return false for invalid month 13', () => {
+    const date = new Date(2021, 13, 1);
+    expect(isDate(date)).toBe(false);
+  });
+  
+  test('should return false for invalid year', () => {
+    const date = new Date(-2023, 1, 1);
+    expect(isDate(date)).toBe(false);
+  });
+
 });
 
 describe('isDate with nodeIsDate mocked', () => {
