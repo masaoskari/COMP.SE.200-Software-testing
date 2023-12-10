@@ -1,6 +1,4 @@
 import isDate from '../src/isDate.js';
-import 'jest-extended';
-import 'jest-chain';
 
 describe('isDate', () => {
   test('should return true for Date objects', () => {
@@ -75,4 +73,5 @@ describe('isDate with nodeIsDate mocked', () => {
     expect(isDate(new Date(2022, 1, 1))).toBe(true);
     expect(isDate(new Date('2022-01-01'))).toBe(true);
   });
+  
 });
