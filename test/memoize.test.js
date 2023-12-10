@@ -1,6 +1,5 @@
 import memoize from '../src/memoize.js';
 import 'jest-extended';
-import 'jest-chain';
 
 
 describe('memoize tests', () => {
@@ -113,7 +112,6 @@ describe('memoize tests', () => {
   test('should assign new Map to memoized.cache if memoize.Cache is not set', () => {
     const func = jest.fn();
     const memoizedFunc = memoize(func);
-  
     expect(memoizedFunc.cache).toBeInstanceOf(Map);
   });
 
