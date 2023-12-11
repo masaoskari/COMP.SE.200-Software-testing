@@ -61,8 +61,4 @@ describe('isEmpty', () => {
     expect(isEmpty(Object.prototype)).toBe(true);
   });
 
-  test('should return true for the default Object prototype', () => {
-    expect(isEmpty(Object.prototype)).toBe(true);
-  });
-
 });
