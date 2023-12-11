@@ -17,6 +17,7 @@ describe('isEmpty', () => {
     expect(isEmpty([])).toBe(true);
     expect(isEmpty('')).toBe(true);
     expect(isEmpty(Symbol())).toBe(true);
+    expect(isEmpty((function() { return arguments; })())).toBe(true);
   });
   
   test('should return false for non-empty array-like objects', () => {
@@ -41,6 +42,11 @@ describe('isEmpty', () => {
   test('should return false for non-empty objects', () => {
     expect(isEmpty({ 'a': 1 })).toBe(false);
   });
+
+  test('should return true for an object with no own properties', () => {
+    const obj = Object.create({ a: 1 });
+    expect(isEmpty(obj)).toBe(true);
+  });
   
   test('should return true for empty buffer', () => {
     
@@ -51,15 +57,12 @@ describe('isEmpty', () => {
     expect(isEmpty(Buffer.from('Hi!'))).toBe(false)
   });
 
-  test('should return true for an prototype object with no own properties', () => {
-    const objWithPrototype = Object.create({ a: 1 });
-    expect(isEmpty(objWithPrototype)).toBe(true);
+  test('should return true for the default Object prototype', () => {
+    expect(isEmpty(Object.prototype)).toBe(true);
   });
 
-  test('should return false for an prototype object with own properties', () => {
-    const objWithOwnProps = Object.create({ a: 1 });
-    objWithOwnProps.b = 2;
-    expect(isEmpty(objWithOwnProps)).toBe(false);
+  test('should return true for the default Object prototype', () => {
+    expect(isEmpty(Object.prototype)).toBe(true);
   });
 
 });

@@ -39,7 +39,7 @@ describe('ceil', () => {
     expect(ceil(0, -2)).toBe(0);
   });
 
-  test('should handle max and mina values correctly', () => {
+  test('should handle max and min values correctly', () => {
     expect(ceil(Number.MAX_SAFE_INTEGER)).toBe(Number.MAX_SAFE_INTEGER);
     expect(ceil(Number.MIN_SAFE_INTEGER)).toBe(Number.MIN_SAFE_INTEGER);
     expect(ceil(Number.MAX_SAFE_INTEGER+1)).toBe(Number.MAX_SAFE_INTEGER+1);
